@@ -94,11 +94,50 @@ var rdigits = /(\d+)+/;
 console.log(rdigits.exec("this is the number 100 and 25")); //?
 console.log(rdigits.exec("space 25").index); //6
 
+//Match Keyword
+/* 
+	Seems like the same as EXEC but with backwards
+	paramters
+*/
 
+var string = "testing match keyword"
+var result = string.match(/keyword/);
+console.log(result); //yup exec but backwards
 
+//Quoted text
+/* 
+	Breakdown:
+	/: start regex
+	': find the first parenthesis
+	(): group everything in here as a single element!
+	[^']: no quotes allowed
+	*: everything but a new space
+	([^']*) : just o be clear, everything but a new space or parenthesis
+	': final parenthesis
+	/: close regex
 
+*/
 
+var rquotedText = /'([^']*)'/;
 
+console.log(rquotedText.test("'The Brown Fox' is the title of the book...")); //true
+console.log(rquotedText.test("'The Brown Fox")); //false - no closing quote
+
+// SPECIAL RULE
+// If there is a subexpression wrapped in parenthesis
+// ([^']*) in this case
+console.log(rquotedText.exec("he said 'hi'")); //will return 'hi' & hi
+
+// SPECIAL RULE #2
+// For subexpressions
+// #1 If no match you will get null as second match
+// #2 If multiple matches only last match will show
+
+var roptional = /try(ing)?/;
+var rdigits = /19(\d)+/;
+
+console.log(roptional.exec("try")); //the second object is null "ing"
+console.log(rdigits.exec(191433)) //3 should be the last match
 
 
 
