@@ -75,6 +75,28 @@ console.log( domCheckbox.type );
 console.log( rcheckableType.test( domCheckbox.type ) );
 
 
+//EXEC Keyword
+/*
+	return an object of the match
+	or null if no match found
+
+	Object contains:
+	0: string
+	1: index
+	2: text being tested
+
+	object: ["100", index: 19, input: "this is the number 100 and 25"]
+
+*/
+
+var rdigits = /(\d+)+/;
+
+console.log(rdigits.exec("this is the number 100 and 25")); //?
+console.log(rdigits.exec("space 25").index); //6
+
+
+
+
 
 
 
